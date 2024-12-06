@@ -96,27 +96,19 @@
 // Task7(1,30);
 // Task7(1,30,0);
 
-// let Task8 = (a,b,c)=>
-// {
-//     if (a < 0 || a > 23 || b < 0 || b > 59 || c < 0 || c > 59) {
-//         return"Invalid";
-// }
-// if(b===undefined)
-//     {
-//         b=0;
-//     }
-//     if(c===undefined)
-//     {
-//         c=0;
-//     }
-// let seconds = c +b*60+a*3600;
-// document.write(`Result = ${seconds}<br/>`);
+let Task8 = (a,b,c)=>
+ {
+    if (a < 0 || a > 23 || b < 0 || b > 59 || c < 0 || c > 59) {
+        return "Invalid";
+    }
+    if (b === undefined) b = 0;
+    if (c === undefined) c = 0;
 
-// }
-// Task8(1, 30, 30);  
-// Task8(2, 0, 0);    
-// Task8(0, 45, 15);  
-// Task8(-1, 30, 30);
+    return a * 3600 + b * 60 + c;
+}
+// document.write(`Result = ${Task8(1, 30, 30)}<br/>`);
+// document.write(`Result = ${Task8(2,0,0)}<br/>`);
+// document.write(`Result = ${Task8(0, 45, 15)}<br/>`);
 
 
 let Task9 = (a) =>
@@ -128,10 +120,18 @@ let Task9 = (a) =>
     let hours = Math.floor(a/3600);
     let minutes = Math.floor((a%3600)/60);
     let seconds = a%60;
-   
 document.write(`Time = ${hours}:${minutes}:${seconds}<br/>`);
 }
-Task9(5430);
-Task9(-1);
-Task9(60);
+
+let Task10 = (h, m, s, h1, m1, s1) => {
+    let time = Task8(h, m, s);
+    let time1 = Task8(h1, m1, s1);
+
+    if (time === "Invalid" || time1 === "Invalid") {
+        return "Invalid";
+    }
+    let difference = Math.abs(time1 - time);
+    return Task9(difference);
+}
+    Task10(1, 30, 30, 2, 0, 0);
 
